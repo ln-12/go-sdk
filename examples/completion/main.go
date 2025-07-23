@@ -9,7 +9,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/modelcontextprotocol/go-sdk/mcp"
+	"github.com/ln-12/go-sdk/mcp"
 )
 
 // This example demonstrates the minimal code to declare and assign

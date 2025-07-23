@@ -15,7 +15,7 @@ import (
 	"time"
 
 	"github.com/google/go-cmp/cmp"
-	"github.com/modelcontextprotocol/go-sdk/mcp"
+	"github.com/ln-12/go-sdk/mcp"
 )
 
 const runAsServer = "_MCP_RUN_AS_SERVER"

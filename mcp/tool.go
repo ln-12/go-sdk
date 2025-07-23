@@ -11,7 +11,7 @@ import (
 	"fmt"
 	"reflect"
 
-	"github.com/modelcontextprotocol/go-sdk/jsonschema"
+	"github.com/ln-12/go-sdk/jsonschema"
 )
 
 // A ToolHandler handles a call to tools/call.

@@ -11,8 +11,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/modelcontextprotocol/go-sdk/jsonschema"
-	"github.com/modelcontextprotocol/go-sdk/mcp"
+	"github.com/ln-12/go-sdk/jsonschema"
+	"github.com/ln-12/go-sdk/mcp"
 )
 
 // This example demonstrates server side logging using the mcp.Middleware system.

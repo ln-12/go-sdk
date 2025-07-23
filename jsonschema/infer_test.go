@@ -10,7 +10,7 @@ import (
 
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
-	"github.com/modelcontextprotocol/go-sdk/jsonschema"
+	"github.com/ln-12/go-sdk/jsonschema"
 )
 
 func forType[T any](lax bool) *jsonschema.Schema {

@@ -14,7 +14,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/modelcontextprotocol/go-sdk/jsonschema"
+	"github.com/ln-12/go-sdk/jsonschema"
 )
 
 // Optional annotations for the client. The client can use annotations to inform

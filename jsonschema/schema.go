@@ -16,7 +16,7 @@ import (
 	"reflect"
 	"slices"
 
-	"github.com/modelcontextprotocol/go-sdk/internal/util"
+	"github.com/ln-12/go-sdk/internal/util"
 )
 
 // A Schema is a JSON schema object.

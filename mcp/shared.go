@@ -19,8 +19,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/modelcontextprotocol/go-sdk/internal/jsonrpc2"
-	"github.com/modelcontextprotocol/go-sdk/jsonrpc"
+	"github.com/ln-12/go-sdk/internal/jsonrpc2"
+	"github.com/ln-12/go-sdk/jsonrpc"
 )
 
 // latestProtocolVersion is the latest protocol version that this version of the SDK supports.

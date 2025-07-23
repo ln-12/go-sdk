@@ -17,7 +17,7 @@ import (
 	"slices"
 	"sync"
 
-	"github.com/modelcontextprotocol/go-sdk/internal/util"
+	"github.com/ln-12/go-sdk/internal/util"
 )
 
 // Equal reports whether two Go values representing JSON values are equal according

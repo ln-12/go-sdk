@@ -27,7 +27,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/modelcontextprotocol/go-sdk/internal/util"
+	"github.com/ln-12/go-sdk/internal/util"
 )
 
 var (

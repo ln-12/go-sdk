@@ -11,7 +11,7 @@ import (
 	"reflect"
 	"regexp"
 
-	"github.com/modelcontextprotocol/go-sdk/internal/util"
+	"github.com/ln-12/go-sdk/internal/util"
 )
 
 // For constructs a JSON schema object for the given type argument.
