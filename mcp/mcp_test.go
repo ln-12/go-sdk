@@ -21,8 +21,8 @@ import (
 	"time"
 
 	"github.com/google/go-cmp/cmp"
-	"github.com/modelcontextprotocol/go-sdk/internal/jsonrpc2"
-	"github.com/modelcontextprotocol/go-sdk/jsonschema"
+	"github.com/ln-12/go-sdk/internal/jsonrpc2"
+	"github.com/ln-12/go-sdk/jsonschema"
 )
 
 type hiParams struct {

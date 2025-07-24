@@ -4,9 +4,9 @@
 
 This version contains breaking changes.
 See the [release notes](
-https://github.com/modelcontextprotocol/go-sdk/releases/tag/v0.2.0) for details.
+https://github.com/ln-12/go-sdk/releases/tag/v0.2.0) for details.
 
-[![PkgGoDev](https://pkg.go.dev/badge/github.com/modelcontextprotocol/go-sdk)](https://pkg.go.dev/github.com/modelcontextprotocol/go-sdk)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/ln-12/go-sdk)](https://pkg.go.dev/github.com/ln-12/go-sdk)
 
 This repository contains an unreleased implementation of the official Go
 software development kit (SDK) for the Model Context Protocol (MCP).
@@ -25,9 +25,9 @@ initially reviewed at
 [modelcontextprotocol/discussions/364](https://github.com/orgs/modelcontextprotocol/discussions/364).
 
 Further design discussion should occur in
-[issues](https://github.com/modelcontextprotocol/go-sdk/issues) (for concrete
+[issues](https://github.com/ln-12/go-sdk/issues) (for concrete
 proposals) or
-[discussions](https://github.com/modelcontextprotocol/go-sdk/discussions) for
+[discussions](https://github.com/ln-12/go-sdk/discussions) for
 open-ended discussion. See [CONTRIBUTING.md](/CONTRIBUTING.md) for details.
 
 ## Package documentation
@@ -35,15 +35,15 @@ open-ended discussion. See [CONTRIBUTING.md](/CONTRIBUTING.md) for details.
 The SDK consists of three importable packages:
 
 - The
-  [`github.com/modelcontextprotocol/go-sdk/mcp`](https://pkg.go.dev/github.com/modelcontextprotocol/go-sdk/mcp)
+  [`github.com/ln-12/go-sdk/mcp`](https://pkg.go.dev/github.com/ln-12/go-sdk/mcp)
   package defines the primary APIs for constructing and using MCP clients and
   servers.
 - The
-  [`github.com/modelcontextprotocol/go-sdk/jsonschema`](https://pkg.go.dev/github.com/modelcontextprotocol/go-sdk/jsonschema)
+  [`github.com/ln-12/go-sdk/jsonschema`](https://pkg.go.dev/github.com/ln-12/go-sdk/jsonschema)
   package provides an implementation of [JSON
   Schema](https://json-schema.org/), used for MCP tool input and output schema.
 - The
-  [`github.com/modelcontextprotocol/go-sdk/jsonrpc`](https://pkg.go.dev/github.com/modelcontextprotocol/go-sdk/jsonrpc) package is for users implementing
+  [`github.com/ln-12/go-sdk/jsonrpc`](https://pkg.go.dev/github.com/ln-12/go-sdk/jsonrpc) package is for users implementing
   their own transports.
    
 

@@ -13,7 +13,7 @@ import (
 	"net/url"
 	"os"
 
-	"github.com/modelcontextprotocol/go-sdk/mcp"
+	"github.com/ln-12/go-sdk/mcp"
 )
 
 var httpAddr = flag.String("http", "", "if set, use streamable HTTP at this address, instead of stdin/stdout")
@@ -23,6 +23,14 @@ type HiArgs struct {
 }
 
 func SayHi(ctx context.Context, ss *mcp.ServerSession, params *mcp.CallToolParamsFor[HiArgs]) (*mcp.CallToolResultFor[struct{}], error) {
+	ss.Log(
+		ctx, &mcp.LoggingMessageParams{
+			Logger: "hotel_search",
+			Level:  "debug",
+			Data:   "hello world",
+		},
+	)
+
 	return &mcp.CallToolResultFor[struct{}]{
 		Content: []mcp.Content{
 			&mcp.TextContent{Text: "Hi " + params.Arguments.Name},
@@ -42,7 +50,7 @@ func PromptHi(ctx context.Context, ss *mcp.ServerSession, params *mcp.GetPromptP
 func main() {
 	flag.Parse()
 
-	server := mcp.NewServer(&mcp.Implementation{Name: "greeter"}, nil)
+	server := mcp.NewServer(&mcp.Implementation{Name: "greeter"}, &mcp.ServerOptions{Stateless: true})
 	mcp.AddTool(server, &mcp.Tool{Name: "greet", Description: "say hi"}, SayHi)
 	server.AddPrompt(&mcp.Prompt{Name: "greet"}, PromptHi)
 	server.AddResource(&mcp.Resource{

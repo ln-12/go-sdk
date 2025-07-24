@@ -17,7 +17,7 @@ import (
 	"sync"
 	"unicode/utf8"
 
-	"github.com/modelcontextprotocol/go-sdk/internal/util"
+	"github.com/ln-12/go-sdk/internal/util"
 )
 
 // The value of the "$schema" keyword for the version that we can validate.

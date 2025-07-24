@@ -29,7 +29,7 @@ go work init ./project ./go-sdk
 ## Filing issues
 
 This project uses the [GitHub issue
-tracker](https://github.com/modelcontextprotocol/go-sdk/issues) for issues. The
+tracker](https://github.com/ln-12/go-sdk/issues) for issues. The
 process for filing bugs and proposals is described below.
 
 TODO(rfindley): describe a process for asking general questions in the public
@@ -38,7 +38,7 @@ MCP discord server.
 ### Bugs
 
 Please [report
-bugs](https://github.com/modelcontextprotocol/go-sdk/issues/new). If the SDK is
+bugs](https://github.com/ln-12/go-sdk/issues/new). If the SDK is
 not working as you expected, it is likely due to a bug or inadequate
 documentation, and reporting an issue will help us address this shortcoming.
 
@@ -72,7 +72,7 @@ to accommodate the greater rate of change expected for the SDK.
 
 For open ended design discussion (anything that doesn't fall into the issue
 categories above), use [GitHub
-Discussions](https://github.com/modelcontextprotocol/go-sdk/discussions).
+Discussions](https://github.com/ln-12/go-sdk/discussions).
 Ideally, each discussion should be focused on one aspect of the design. For
 example: Tool Binding and Session APIs would be two separate discussions.
 When discussions reach a consensus, they should be promoted into proposals.
@@ -83,7 +83,7 @@ The project uses GitHub pull requests (PRs) to review changes.
 
 Any significant change should be associated with a GitHub issue. Issues that
 are deemed to be good opportunities for contribution are be labeled ['Help
-Wanted'](https://github.com/modelcontextprotocol/go-sdk/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22help%20wanted%22).
+Wanted'](https://github.com/ln-12/go-sdk/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22help%20wanted%22).
 If you want to work on such an issue, please first comment on the issue to say
 that you're interested in contributing. For issues _not_ labeled 'Help Wanted',
 it is recommended that you ask (and wait for confirmation) on the issue before

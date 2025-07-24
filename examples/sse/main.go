@@ -10,7 +10,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/modelcontextprotocol/go-sdk/mcp"
+	"github.com/ln-12/go-sdk/mcp"
 )
 
 var httpAddr = flag.String("http", "", "use SSE HTTP at this address")

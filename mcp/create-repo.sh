@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # This script creates an MCP SDK repo from x/tools/internal/mcp (and friends).
-# It will be used as a one-off to create github.com/modelcontextprotocol/go-sdk.
+# It will be used as a one-off to create github.com/ln-12/go-sdk.
 #
 # Requires https://github.com/newren/git-filter-repo.
 
@@ -74,7 +74,7 @@ git add LICENSE && git commit -m "Initial commit: add LICENSE"
 git remote add filtered_source "${tempdir}"
 git pull filtered_source master --allow-unrelated-histories
 git remote remove filtered_source
-go mod init github.com/modelcontextprotocol/go-sdk && go get go@1.23.0
+go mod init github.com/ln-12/go-sdk && go get go@1.23.0
 go mod tidy
 git add go.mod go.sum
 git commit -m "all: add go.mod and go.sum file"

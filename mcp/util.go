@@ -11,7 +11,7 @@ import (
 	"reflect"
 	"sync"
 
-	"github.com/modelcontextprotocol/go-sdk/internal/util"
+	"github.com/ln-12/go-sdk/internal/util"
 )
 
 func assert(cond bool, msg string) {
