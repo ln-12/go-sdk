@@ -97,12 +97,13 @@ func (h *StreamableHTTPHandler) ServeHTTP(w http.ResponseWriter, req *http.Reque
 		return
 	}
 
+	server := h.getServer(req)
 	var session *StreamableServerTransport
 	if id := req.Header.Get(sessionIDHeader); id != "" {
 		h.sessionsMu.Lock()
 		session, _ = h.sessions[id]
 		h.sessionsMu.Unlock()
-		if session == nil {
+		if session == nil && !server.opts.Stateless {
 			http.Error(w, "session not found", http.StatusNotFound)
 			return
 		}
@@ -133,8 +134,7 @@ func (h *StreamableHTTPHandler) ServeHTTP(w http.ResponseWriter, req *http.Reque
 	}
 
 	if session == nil {
-		s := NewStreamableServerTransport(randText(), nil)
-		server := h.getServer(req)
+		s := NewStreamableServerTransport(randText(), server.opts.Stateless, nil)
 		// Pass req.Context() here, to allow middleware to add context values.
 		// The context is detached in the jsonrpc2 library when handling the
 		// long-running stream.
@@ -165,12 +165,15 @@ type StreamableServerTransportOptions struct {
 //
 // A StreamableServerTransport implements the server-side of the streamable
 // transport.
-func NewStreamableServerTransport(sessionID string, opts *StreamableServerTransportOptions) *StreamableServerTransport {
+func NewStreamableServerTransport(
+	sessionID string, isStateless bool, opts *StreamableServerTransportOptions,
+) *StreamableServerTransport {
 	if opts == nil {
 		opts = &StreamableServerTransportOptions{}
 	}
 	t := &StreamableServerTransport{
 		id:             sessionID,
+		isStateless:    isStateless,
 		incoming:       make(chan jsonrpc.Message, 10),
 		done:           make(chan struct{}),
 		outgoing:       make(map[StreamID][][]byte),
@@ -196,9 +199,10 @@ func (t *StreamableServerTransport) SessionID() string {
 type StreamableServerTransport struct {
 	nextStreamID atomic.Int64 // incrementing next stream ID
 
-	id       string
-	opts     StreamableServerTransportOptions
-	incoming chan jsonrpc.Message // messages from the client to the server
+	id          string
+	isStateless bool
+	opts        StreamableServerTransportOptions
+	incoming    chan jsonrpc.Message // messages from the client to the server
 
 	mu sync.Mutex
 	// Sessions are closed exactly once.
