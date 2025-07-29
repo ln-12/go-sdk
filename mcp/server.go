@@ -12,7 +12,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"iter"
-	"log"
 	"maps"
 	"net/url"
 	"path/filepath"
@@ -30,7 +29,7 @@ const DefaultPageSize = 1000
 // A Server is an instance of an MCP server.
 //
 // Servers expose server-side MCP features, which can serve one or more MCP
-// sessions by using [Server.Start] or [Server.Run].
+// sessions by using [Server.Run].
 type Server struct {
 	// fixed at creation
 	impl *Implementation
@@ -78,8 +77,7 @@ type ServerOptions struct {
 // NewServer creates a new MCP server. The resulting server has no features:
 // add features using the various Server.AddXXX methods, and the [AddTool] function.
 //
-// The server can be connected to one or more MCP clients using [Server.Start]
-// or [Server.Run].
+// The server can be connected to one or more MCP clients using [Server.Run].
 //
 // The first argument must not be nil.
 //
@@ -135,13 +133,18 @@ func (s *Server) RemovePrompts(names ...string) {
 }
 
 // AddTool adds a [Tool] to the server, or replaces one with the same name.
-// The tool's input schema must be non-nil.
 // The Tool argument must not be modified after this call.
+//
+// The tool's input schema must be non-nil. For a tool that takes no input,
+// or one where any input is valid, set [Tool.InputSchema] to the empty schema,
+// &jsonschema.Schema{}.
 func (s *Server) AddTool(t *Tool, h ToolHandler) {
-	// TODO(jba): This is a breaking behavior change. Add before v0.2.0?
 	if t.InputSchema == nil {
-		log.Printf("mcp: tool %q has a nil input schema. This will panic in a future release.", t.Name)
-		// panic(fmt.Sprintf("adding tool %q: nil input schema", t.Name))
+		// This prevents the tool author from forgetting to write a schema where
+		// one should be provided. If we papered over this by supplying the empty
+		// schema, then every input would be validated and the problem wouldn't be
+		// discovered until runtime, when the LLM sent bad data.
+		panic(fmt.Sprintf("adding tool %q: nil input schema", t.Name))
 	}
 	if err := addToolErr(s, t, h); err != nil {
 		panic(err)
@@ -741,7 +744,7 @@ func (ss *ServerSession) handle(ctx context.Context, req *jsonrpc.Request) (any,
 	}
 	// For the streamable transport, we need the request ID to correlate
 	// server->client calls and notifications to the incoming request from which
-	// they originated. See [idContext] for details.
+	// they originated. See [idContextKey] for details.
 	ctx = context.WithValue(ctx, idContextKey{}, req.ID)
 	return handleReceive(ctx, ss, req)
 }
